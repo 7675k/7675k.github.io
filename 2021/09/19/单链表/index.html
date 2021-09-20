@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Li Kun">
+    
+    <title>
+        
+            单链表基本操作实现 |
+        
+        Lk&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.jpg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"出发，目标彩虹海"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Lk&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">单链表基本操作实现</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.jpg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Li Kun</span>
+                        
+                            <span class="author-label">Lv1</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        .article-meta-info {
+  font-size: 0.8rem;
+  color: var(--third-text-color);
+
+  .article-meta-item {
+    margin-right: 10px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+
+  .article-tags, .article-categories {
+    display: inline;
+
+    ul, li {
+      display: inline;
+    }
+
+    a {
+      color: var(--third-text-color);
+
+      &:hover {
+        color: var(--primary-color);
+      }
+    }
+  }
+
+
+  .article-wordcount, .article-tags {
+    +keep-mobile() {
+      display: none;
+    }
+  }
+
+  .article-min2read, .article-categories {
+
+    +keep-tablet() {
+      display: none;
+    }
+
+  }
+}
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h1><h2 id="链表的基本概念"><a href="#链表的基本概念" class="headerlink" title="链表的基本概念"></a>链表的基本概念</h2><p>链表是一种链式存储的线性表，所有元素的内存地址不一定是连续的，链表每个节点有两部分分组成，一个是数据域（也就是该元素的数据信息）用element表示，一个是指针域（与就是对于下一个节点的引用）用next表示；</p>
+<h2 id="链表的设计与实现"><a href="#链表的设计与实现" class="headerlink" title="链表的设计与实现"></a>链表的设计与实现</h2><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="98E4F2F059B6434C822C76EB87FD124B"
+                      alt="image"
+                ></p>
+<h3 id="接口设计"><a href="#接口设计" class="headerlink" title="接口设计"></a>接口设计</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 清除所有元素</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 元素的数量</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 是否为空</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 是否包含某个元素</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> element</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(E element)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 添加元素到尾部</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> element</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(E element)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取index位置的元素</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> index</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">E <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 设置index位置的元素</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> index</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> element</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> 原来的元素ֵ</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">E <span class="title">set</span><span class="params">(<span class="keyword">int</span> index, E element)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 在index位置插入一个元素</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> index</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> element</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> index, E element)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 删除index位置的元素</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> index</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">E <span class="title">remove</span><span class="params">(<span class="keyword">int</span> index)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 查看元素的索引</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> element</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">indexOf</span><span class="params">(E element)</span></span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="接口的实现"><a href="#接口的实现" class="headerlink" title="接口的实现"></a>接口的实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> priv.kun.LinkedList;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> likun</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Package</span> priv.kun.LinkedList</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>:</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingleLinkedList</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> size; <span class="comment">//元素的数量</span></span><br><span class="line">    <span class="keyword">private</span> Node&lt;E&gt; first; <span class="comment">//头节点</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">E</span>&gt;</span>&#123;</span><br><span class="line">        E element;</span><br><span class="line">        Node&lt;E&gt; next;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(E element,Node&lt;E&gt; next)</span></span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.element=element;</span><br><span class="line">            <span class="keyword">this</span>.next=next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 清空</span></span><br><span class="line"><span class="comment">     * size设置为0 ，头节点为null</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        size=<span class="number">0</span>;</span><br><span class="line">        first=<span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 元素的数量</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 是否为空</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> size==<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 返回某个元素的位置</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> element</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">indexOf</span><span class="params">(E element)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (element==<span class="keyword">null</span>)&#123;</span><br><span class="line">            Node&lt;E&gt; node=first;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;size;i++)&#123;</span><br><span class="line">                <span class="keyword">if</span> (node.element==<span class="keyword">null</span>) <span class="keyword">return</span> i;</span><br><span class="line">                node=node.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            Node&lt;E&gt; node=first;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;size;i++)&#123;</span><br><span class="line">                <span class="keyword">if</span> (element.equals(node.element)) <span class="keyword">return</span> i;</span><br><span class="line">                node=node.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 是否包含某个元素</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> element</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(E element)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> indexOf(element) != -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 在尾部添加元素</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> element</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(E element)</span> </span>&#123;</span><br><span class="line">        add(size,element);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 在index位置添加元素</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> index</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> element</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> index, E element)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (index == <span class="number">0</span>) &#123;</span><br><span class="line">            first = <span class="keyword">new</span> Node&lt;&gt;(element, <span class="keyword">null</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            Node&lt;E&gt; prev = node(index - <span class="number">1</span>);</span><br><span class="line">            prev.next = <span class="keyword">new</span> Node&lt;&gt;(element, prev.next);</span><br><span class="line">        &#125;</span><br><span class="line">        size++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 返回 index位置的元素</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> index</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> E <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> node(index).element;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 返回某个位置节点</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> index</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Node&lt;E&gt; <span class="title">node</span><span class="params">(<span class="keyword">int</span> index)</span></span>&#123;</span><br><span class="line">        Node&lt;E&gt; node=first;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;index;i++)&#123;</span><br><span class="line">            node=node.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> node;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 设置index位置的元素</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> index</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> element</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> E <span class="title">set</span><span class="params">(<span class="keyword">int</span> index, E element)</span> </span>&#123;</span><br><span class="line">        Node&lt;E&gt; node = node(index); <span class="comment">//找到index 位置的节点</span></span><br><span class="line">        E oldElement = node.element;</span><br><span class="line">        node.element=element;</span><br><span class="line">        <span class="keyword">return</span> oldElement;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 删除 index位置的元素</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> index</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> E <span class="title">remove</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">        Node&lt;E&gt; node = node(index);<span class="comment">//删除的节点</span></span><br><span class="line">        <span class="keyword">if</span> (index==<span class="number">0</span>)&#123; <span class="comment">//删除的是第一个节点</span></span><br><span class="line">            first=node.next;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            Node&lt;E&gt; prev = node(index - <span class="number">1</span>); <span class="comment">//删除的前一个节点</span></span><br><span class="line">            Node&lt;E&gt; next = node.next; <span class="comment">//删除节点的后一个节点</span></span><br><span class="line">            prev.next=next; <span class="comment">//</span></span><br><span class="line">        &#125;</span><br><span class="line">        size--;</span><br><span class="line">        <span class="keyword">return</span> node.element;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        StringBuilder stringBuilder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        stringBuilder.append(<span class="string">&quot;size:&quot;</span>).append(size).append(<span class="string">&quot; ,[&quot;</span>);</span><br><span class="line">        Node&lt;E&gt; node=first;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;size;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (i!=<span class="number">0</span>)&#123;</span><br><span class="line">                stringBuilder.append(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            stringBuilder.append(node.element);</span><br><span class="line">            node=node.next;</span><br><span class="line">        &#125;</span><br><span class="line">        stringBuilder.append(<span class="string">&quot;]&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> stringBuilder.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span></span>&#123;</span><br><span class="line">       SingleLinkedList&lt;Integer&gt; list = <span class="keyword">new</span> SingleLinkedList&lt;&gt;();</span><br><span class="line">       list.add(<span class="number">1</span>);</span><br><span class="line">       list.add(<span class="number">2</span>);</span><br><span class="line">       list.set(<span class="number">0</span>,<span class="number">111</span>);</span><br><span class="line">       System.out.println(list.get(<span class="number">0</span>));</span><br><span class="line">       System.out.println(list);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="6607FD50BA494417947A8AD037E01F81"
+                      alt="image"
+                ></p>
+<p>这里的实现并没有做一些非法参数传入入的处理，例如node(-5),这一看就不合理，默认先认为传入的数据都是合理的，并且有一些错误java就可以抛出异常。</p>
+<p>（实现的可能有错误，或者不合理的地方，等发现在修改）</p>
+<h2 id="C语言实现链表"><a href="#C语言实现链表" class="headerlink" title="C语言实现链表"></a>C语言实现链表</h2><p>实现思路和上面一样，</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span> </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">    定义结构</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span>  element;   <span class="comment">//c语言中好像没有泛型，默认就是int类型的元素  </span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;Node;</span><br><span class="line"></span><br><span class="line"><span class="function">Node* <span class="title">init</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function">Node* <span class="title">add</span><span class="params">(Node* frist,<span class="keyword">int</span> element)</span></span>; <span class="comment">//添加节点</span></span><br><span class="line"><span class="function">Node* <span class="title">addForIndex</span><span class="params">(Node* first,<span class="keyword">int</span> index,<span class="keyword">int</span> element)</span></span>; <span class="comment">//添加节点在index位置</span></span><br><span class="line"><span class="function">Node* <span class="title">findNode</span><span class="params">(Node* frist,<span class="keyword">int</span> index)</span></span>;  <span class="comment">//查找index位置的节点</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(Node *p)</span></span>;  <span class="comment">//打印</span></span><br><span class="line"><span class="function">Node* <span class="title">del</span><span class="params">(Node *first,<span class="keyword">int</span> index)</span></span>;  <span class="comment">//删除index位置的节点</span></span><br><span class="line"><span class="function">Node* <span class="title">clear</span><span class="params">(Node* first)</span></span>; <span class="comment">//清空</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//Node *first; //定义单链表的头指针</span></span><br><span class="line"><span class="keyword">int</span> size=<span class="number">0</span>; <span class="comment">//元素数量</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function">Node* <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Node * first;</span><br><span class="line">    first=<span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> first;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 添加节点 */</span></span><br><span class="line"><span class="function">Node* <span class="title">add</span><span class="params">(Node* first,<span class="keyword">int</span> element)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> addForIndex(first,size,element);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 在index位置添加节点 */</span></span><br><span class="line"><span class="function">Node* <span class="title">addForIndex</span><span class="params">(Node* first,<span class="keyword">int</span> index,<span class="keyword">int</span> element)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(size==<span class="number">0</span>)&#123;</span><br><span class="line">        Node *c=(Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));  <span class="comment">//分配一个节点，并让指针p指向这个节点</span></span><br><span class="line">        first=c;</span><br><span class="line">      <span class="comment">/*   first-&gt;element=element;</span></span><br><span class="line"><span class="comment">        first-&gt;next=NULL; */</span></span><br><span class="line">        first-&gt; element=element;</span><br><span class="line">        first-&gt; next=<span class="literal">NULL</span>; </span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        Node *c=(Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));  <span class="comment">//添加的节点</span></span><br><span class="line">        Node *prev=findNode(first,index<span class="number">-1</span>);  <span class="comment">//添加节点的前一个节点</span></span><br><span class="line">        c-&gt; element=element;</span><br><span class="line">        c-&gt; next=prev-&gt;next;</span><br><span class="line">        prev-&gt;next=c;</span><br><span class="line">    &#125;</span><br><span class="line">    size++;</span><br><span class="line">    <span class="keyword">return</span> first;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Node* <span class="title">findNode</span><span class="params">(Node* first,<span class="keyword">int</span> index)</span></span>&#123;</span><br><span class="line">    Node *temp=first;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;index;i++)&#123;</span><br><span class="line">        temp=temp-&gt;next;</span><br><span class="line">    &#125; </span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">    Node *c=(Node*)malloc(sizeof(Node)); */</span></span><br><span class="line">    <span class="keyword">return</span> temp;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(Node *p)</span></span>&#123;</span><br><span class="line">    Node* temp=p;</span><br><span class="line">    <span class="keyword">while</span> (temp!=<span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,temp-&gt;element);</span><br><span class="line">        temp=temp-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;size=%d&quot;</span>,size);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 删除节点</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">Node* <span class="title">del</span><span class="params">(Node* first,<span class="keyword">int</span> index)</span></span>&#123;</span><br><span class="line">    Node *del=findNode(first,index); <span class="comment">//删除的节点</span></span><br><span class="line">    <span class="keyword">if</span>(index==<span class="number">0</span>)&#123;</span><br><span class="line">        first=del-&gt;next;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        Node *prev=findNode(first,index<span class="number">-1</span>);</span><br><span class="line">        prev-&gt;next=prev-&gt;next-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(del);</span><br><span class="line">    size--;</span><br><span class="line">    <span class="keyword">return</span> first;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Node* <span class="title">clear</span><span class="params">(Node* first)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp=size;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;temp;i++)&#123;</span><br><span class="line">        del(first,<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    size=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> first;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// add(2);</span></span><br><span class="line">    <span class="comment">// add(3);</span></span><br><span class="line">    <span class="comment">// add(4);</span></span><br><span class="line">    <span class="comment">// addForIndex(3,6);</span></span><br><span class="line">    <span class="comment">// //clear();</span></span><br><span class="line">    <span class="comment">// add(5644);</span></span><br><span class="line">    <span class="comment">// /* del(0);</span></span><br><span class="line">    <span class="comment">// del(3); */</span></span><br><span class="line">    <span class="comment">// del(0);</span></span><br><span class="line">    <span class="comment">// del(0);</span></span><br><span class="line">    <span class="comment">// del(0);</span></span><br><span class="line">    <span class="comment">// clear();</span></span><br><span class="line">    <span class="comment">// add(123);</span></span><br><span class="line">    <span class="comment">// display(first);</span></span><br><span class="line">   <span class="comment">/*  Node *c=findNode(2);</span></span><br><span class="line"><span class="comment">    printf(&quot;%d&quot;,c-&gt;element); */</span></span><br><span class="line">     Node* first=init();</span><br><span class="line">   first=add(first,<span class="number">1</span>);</span><br><span class="line">   first=add(first,<span class="number">3</span>);</span><br><span class="line">   first=del(first,<span class="number">0</span>);</span><br><span class="line">   clear(first);</span><br><span class="line">   first=add(first,<span class="number">123</span>);</span><br><span class="line">    display(first); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\nthis is main&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="BFB118D89FD74047ADAED1DECF2AE98D"
+                      alt="image"
+                ></p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：单链表基本操作实现</li>
+        <li>Post author：Li Kun</li>
+        <li>Create time：2021-09-19 18:55:14</li>
+        <li>
+            Post link：https://7675k.github.io/2021/09/19/单链表/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2020/04/07/demo/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Keep 主题使用指南</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Li Kun</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8"><span class="nav-text">链表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-text">链表的基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0"><span class="nav-text">链表的设计与实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1"><span class="nav-text">接口设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-text">接口的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="nav-text">测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E9%93%BE%E8%A1%A8"><span class="nav-text">C语言实现链表</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/code-copy.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/toc.js"></script>
+    
+</div>
+
+
+
+</body>
+</html>
