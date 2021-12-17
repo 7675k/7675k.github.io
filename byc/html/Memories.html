@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Happy New Year</title>
+  <link rel="stylesheet" href="../css/jquery.fullPage.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/tupian.css"><!--百叶图-->
+  <!--------------------------------------------------------------------->
+  <link rel="stylesheet" href="../css/shengdanlaoren.css"><!--圣诞老人-->
+  <link rel="stylesheet" href="../css/photopile.css">
+  <link rel="stylesheet" href="../css/demo.css">
+  <link rel="stylesheet" href="../css/normalize.css">
+
+    <!--粉笔字-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-grid.min.css" /><!--CSS RESET-->
+    <link rel="stylesheet" type="text/css" href="css/htmleaf-demo.css">
+    <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch:700&display=swap" rel="stylesheet">
+    <style>
+    .demo{
+      /*background: #222; */
+    }
+    .text-effect{
+      color: #ff0000;
+      font-family: FZShuTi, cursive;
+      font-size: 100px;
+      text-align: center;
+      text-transform: uppercase;
+      margin: 0 auto;
+      position: relative;
+      z-index: -1;
+      float: right;
+      top: 5%;
+      right: 10%;
+
+    }
+    .text-effect span{
+      display: inline-block;
+      animation: animate 0.5s linear infinite both;
+    }
+    .text-effect span:nth-child(1),
+    .text-effect span:nth-child(4),
+    .text-effect span:nth-child(7),
+    .text-effect span:nth-child(10){
+      color: #ffff00;
+    }
+    .text-effect span:nth-child(2),
+    .text-effect span:nth-child(5),
+    .text-effect span:nth-child(8){
+      color: blueviolet;
+    }
+    @keyframes animate{
+      0%, 50%, 100%{ transform: rotate(0deg) scale(1); }
+      25%{ transform: rotate(4deg) scale(0.98); }
+      75%{ transform: rotate(-4deg) scale(1.02); }
+    }
+    @media only screen and (max-width: 990px){
+      .text-effect{ font-size: 100px; }
+    }
+    @media only screen and (max-width: 767px){
+      .text-effect{ font-size: 80px; }
+    }
+    @media only screen and (max-width: 479px){
+      .text-effect{ font-size: 60px; }
+    }
+    @media only screen and (max-width: 359px){
+      .text-effect{ font-size: 45px; }
+    }
+  </style>
+  <!--图片墙-->
+
+</head>
+
+<body>
+  <div class="bgcolor">
+    <div style="z-index:100;" id="dowebok">
+      <!--第一屏-->
+      <div class="section">
+        <div class="ly-box01">
+          <div class="ly-txt01">
+            <p class="ly-stxt01">愿你能精致到老，眼里</p>
+            <p class="ly-stxt02">长着太阳，笑里全是坦荡。</p>
+            <p class="ly-stxt03">阳光下永远像个孩子，风雨里</p>
+            <p class="ly-stxt04">像个大人，无畏亦无惧。</p>
+            <!-- ，在认清 -->
+            <p class="ly-stxt05">你若不伤，岁月无恙。</p>
+            <!-- <p class="ly-stxt05">生活的真相后，更加热爱它吧！</p> -->
+          </div>
+          <div class="ly-txt02">
+            <p class="ly-stxt06">我不是在最好的时光</p>
+            <p class="ly-stxt07">遇见了你，而是遇见了你</p>
+            <p class="ly-stxt08">才开始了我这段最好的时光。</p>
+            <p class="ly-stxt09">承蒙时光不弃，感谢相遇。</p>
+            <p class="ly-stxt10">祝你：~~~~~（滑动鼠标滚轮）</p>
+          </div>
+        </div>
+      </div>
+
+      <!--第二屏-->
+      <div class="section">
+        <div class="timeline"></div>
+        <div class="timepoint11"></div>
+        <div class="ly-box11">
+          <div class="ly-txt11" style="width:100%;height:10%;left:10%">
+            <img class="ly-img11" src="../img/aaaaa.png" style="width:40%;height:30%">
+          </div>
+          <div class="ly-txt12">
+
+          </div>
+          <div class="ly-imgbox11" style="height:80%">
+            <img class="ly-img11" src="../img/a01.jpg" style="">
+          </div>
+        </div>
+        <div class="ly-triangle11"></div>
+
+        <div class="ly-box12">
+          <div class="ly-txt13" style="width:100%;height:10%;left:10%">
+            <img class="ly-img11" src="../img/bbbbb.png" style="width:75%;height:100%">
+          </div>
+          <div class="ly-txt14">
+            <p>小可爱</p>
+            <p>祝你在新的一年里所有的希望都能如愿</p>
+            <p>所有的梦想都能实现</p>
+            <p>所有的期待都能出现</p>
+            <p>所有的付出都能兑现在新年来临之即。</p>
+          </div>
+          <div class="ly-imgbox11" style="height:50%">
+            <img class="ly-img11" src="../img/a02.png" style="height:100%">
+          </div>
+        </div>
+        <div class="ly-triangle12"></div>
+
+      </div>
+
+      <!--第三屏-->
+
+      <div class="section">
+        <div class="timeline"></div>
+        <div class="timepoint21"></div>
+        <div class="ly-box21">
+          <div class="ly-txt21" style="width:100%;height:10%;left:10%">
+            <img class="ly-img11" src="../img/bbbbb.png" style="width:65%;height:100%">
+          </div>
+          <div class="ly-txt22" style="left:20%;font-size: 25px">
+            <p>祝</p>
+            <p>小</p>
+			 <p>仙</p>
+			  <p>女</p>
+		 
+          </div>
+          <div class="ly-imgbox21">
+            <img class="ly-img21" src="../img/a03.jpg">
+          </div>
+        </div>
+        <div class="ly-triangle21"></div>
+
+        <div class="ly-box22">
+          <div class="ly-txt23" style="width:100%;height:10%;left:10%">
+            <img class="ly-img11" src="../img/bbbbb.png" style="width:65%;height:100%">
+          </div>
+          <div class="ly-txt24">
+            <p>岁岁常欢愉</p>
+            <p>年年皆胜意</p>
+            <p>所求皆所愿</p>
+            <p>所行化坦途</p>
+          </div>
+          <div class="ly-imgbox22">
+            <img class="ly-img22" src="../img/asd.jpg">
+          </div>
+        </div>
+        <div class="ly-triangle22"></div>
+
+        <div class="ly-box23">
+          <div class="ly-txt25" style="width:100%;height:10%;left:10%">
+            <img class="ly-img11" src="../img/bbbbb.png" style="width:65%;height:100%">
+          </div>
+          <div class="ly-txt26">
+            <p>美丽压群芳</p>
+            <p>善良传四方</p>
+            <p>温柔力无挡</p>
+          </div>
+          <div class="ly-imgbox23" style="height: 70%">
+            <img class="ly-img23" src="../img/nidemingzi.jpeg" style="height: auto">
+          </div>
+        </div>
+        <div class="ly-triangle23"></div>
+      </div>
+
+      <!--第四屏-->
+
+      <div class="section">
+        <div class="timeline"></div>
+        <div class="timepoint31"></div>
+        <div class="ly-box31">
+          <div class="ly-txt31" style="width:100%;height:10%;left:10%">
+            <img class="ly-img11" src="../img/bbbbb.png" style="width:65%;height:100%">
+          </div>
+          <div class="ly-txt32">
+            <p>愿你:</p>
+            <p>愿你走出半生，归来仍是少年；</p>
+            <p>愿你所到之处，遍地阳光；</p>
+            <p>愿你三餐四季，温暖有趣🌈</p>
+          </div>
+          <div class="ly-imgbox31" style="height:50%">
+            <img class="ly-img31" src="../img/paidaxing.png" style="height:100%">
+          </div>
+        </div>
+        <div class="ly-triangle31"></div>
+
+        <div class="ly-box32">
+          <div class="ly-txt33" style="width:100%;height:15%;left:10%">
+            <img class="ly-img11" src="../img/bbbbb.png" style="width:65%;height:100%">
+          </div>
+          <div class="ly-txt34">
+            <p>愿你所有的欢乐都陪伴着你，仰首是春，俯首是秋；愿所有的幸福都伴随着你，月圆是画，月缺是诗；</p>
+          </div>
+          <div class="ly-imgbox31">
+            <img class="ly-img31" src="../img/xiyang.png" style="height:100%">
+          </div>
+        </div>
+        <div class="ly-triangle32"></div>
+      </div>
+
+      <!--第五屏-->
+      <div class="section">
+        <div class="timeline"></div>
+        <div class="timepoint11"></div>
+        <div class="ly-box81">
+          <div class="ly-txt11" style="width:100%;height:10%;left:10%">
+            <img class="ly-img11" src="../img/bbbbb.png" style="width:65%;height:100%">
+          </div>
+          <div class="ly-txt82" style="top:8%">
+            <p></p>
+            <p></p>
+            <p class="wwww1">来自坤坤的祝福：</p>
+            <p class="wwww1">在2022年希望你依然砥砺前行</p>
+            <p class="wwww1"></p>
+            <p class="wwww1">追逐属于自己的星光</p>
+            <p class="wwww1">愿每天开心，事事顺意</p>
+            <p class="wwww1">生活明朗，万物可爱</p>
+            <p class="wwww1">嘻嘻嘻！！！</p>
+          </div>
+          <div class="ly-imgbox81">
+            <img class="ly-img81" src="../img/a2022.png">
+          </div>
+        </div>
+        <div class="ly-triangle11"></div>
+
+        <div class="ly-box82">
+          <div class="ly-txt13" style="width:100%;height:10%;left:10%">
+            <img class="ly-img11" src="../img/bbbbb.png" style="width:65%;height:100%">
+          </div>
+          <div class="ly-txt84">
+            <p>Hi!毕雨辰</p>
+            <!--你敢不快乐，我就让世界末日降临，天地崩裂海水咆哮火山爆发地动山摇！所以，为了拯救人类，一定要快乐哦！-->
+            <p>即将步入新的一年!</p>
+            <p>在这个时刻，</p>
+            <p>首先送上我的祝福，希望2022身体健康，所有的烦恼统统全忘掉。</p>
+            <p>新的一年里，你敢不快乐，我就让世界末日降临，天地崩裂海水咆哮火山爆发地动山摇！所以，为了拯救人类，一定要快乐哦！</P>
+            <p>希望每天都能开开心心，吃特别多的好吃的，咋吃都不胖，</p>
+            <p>去特别多好玩的地方，咋玩都不会累。嘻嘻</p>
+            <p>在这个冬天里，不管是学校还是在家，答应我一定要照顾好自己，好吗？ 好的！~</p>
+            <p>等开春，一起去吃你最想吃的东西，见你最想见的人，去你最想去的地方。好不好</p>
+            <!--<p><a href="./EasterEgg.html">点击有彩蛋</a> </p>-->
+          </div>
+          <!--
+          <div class="ly-imgbox11" style="height:100px;width:100px;left:30%;bottom: 10px">
+            <img class="ly-img11" src="../img/ewm.png" style="height:100%">
+          </div>
+          <div class="ly-imgbox11" style="height:100px;width:100px;left:50%;bottom: 10px">
+            <img class="ly-img11" src="../img/ewm1.png" style="height:100%">
+          </div>-->
+
+          <!--圣诞老人-->
+          <div class="circular-bg">
+            <div class="moon"></div>
+            <div class="snores">
+              <div class="snore snore1">Z</div>
+              <div class="snore snore2">Z</div>
+              <div class="snore snore3">Z</div>
+            </div>
+            <div class="santa">
+              <div class="disc"></div>
+
+              <div class="hat">
+                <div class="hat-space"></div>
+              </div>
+              <div class="furr"></div>
+
+              <div class="face">
+                <div class="eyebrows eyebrows--left"></div>
+                <div class="eyebrows eyebrows--right"></div>
+                <div class="nose"></div>
+                <div class="beard">
+                  <div class="beard--left"></div>
+                  <div class="beard--right"></div>
+                </div>
+                <div class="mouth"> </div>
+              </div>
+              <div class="hand--up">
+                <div class="arm--right"></div>
+
+                <div class="hand--right"></div>
+
+              </div>
+              <div class="hand--left"></div>
+              <div class="stomach">
+                <div class="belt-buckle"></div>
+              </div>
+              <div class="leg--up"></div>
+              <div class="leg--down"></div>
+
+            </div>
+            <div class="christmas-tree">
+              <div class="tree-top4"></div>
+              <div class="tree-top3"></div>
+              <div class="tree-top2"></div>
+              <div class="tree-top1"></div>
+              <div class="tree-bottom"></div>
+            </div>
+            <div class="christmas-tree-small">
+              <div class="tree-top4"></div>
+              <div class="tree-top3"></div>
+              <div class="tree-top2"></div>
+              <div class="tree-top1"></div>
+              <div class="tree-bottom"></div>
+            </div>
+            <div class="christmas-tree-white">
+              <div class="tree-top4"></div>
+              <div class="tree-top3"></div>
+              <div class="tree-top2"></div>
+              <div class="tree-top1"></div>
+              <div class="tree-bottom"></div>
+            </div>
+            <div class="gift gift--orange">
+              <div class="gift-bow--left"></div>
+              <div class="gift-bow--right"></div>
+              <div class="gift-ribbon"></div>
+              <div class="gift-top"></div>
+              <div class="gift-bottom"></div>
+            </div>
+            <div class="gift">
+              <div class="gift-bow--left"></div>
+              <div class="gift-bow--right"></div>
+              <div class="gift-ribbon"></div>
+              <div class="gift-top"></div>
+              <div class="gift-bottom"></div>
+            </div>
+          </div>
+        </div>
+        <div class="ly-triangle82"></div>
+      </div>
+
+      <!--第六屏 ： 照片集-->
+      <div class="section">
+        <div class="timeline"></div>
+        <div class="timepoint31"></div>
+
+<!--        <p>aaaaaaaaaaaaaaaa</p>-->
+        <!--粉笔字-->
+        <div class="text-effect">
+          <span>毕</span><br><span>♥</span><br><span>雨</span><br><span>♥</span><br><span>辰</span>
+        </div>
+       <!-- <div class="htmleaf-container">
+          <div class="demo" style="min-height:20px;">
+            <div class="text-effect">
+              <span>毕</span><span>雨</span><span>辰</span>
+            </div>
+&lt;!&ndash;            <div class="container">&ndash;&gt;
+&lt;!&ndash;              <div class="row">&ndash;&gt;
+&lt;!&ndash;                <div class="col-md-12">&ndash;&gt;
+&lt;!&ndash;                  <div class="text-effect">&ndash;&gt;
+&lt;!&ndash;                    <span>毕</span><span>雨</span><span>辰</span>&ndash;&gt;
+&lt;!&ndash;&lt;!&ndash;                    <span>B</span><span>e</span><span>s</span><span>t</span>&ndash;&gt;&ndash;&gt;
+&lt;!&ndash;&lt;!&ndash;                    <span>J</span><span>Q</span><span>u</span><span>e</span><span>r</span><span>y</span>&ndash;&gt;&ndash;&gt;
+&lt;!&ndash;                  </div>&ndash;&gt;
+&lt;!&ndash;                 &lt;!&ndash; <div class="text-effect">&ndash;&gt;
+&lt;!&ndash;                    <span>C</span><span>S</span><span>S</span><span>3</span>&ndash;&gt;
+&lt;!&ndash;                    <span>A</span><span>W</span><span>E</span><span>S</span><span>O</span><span>M</span><span>E</span>&ndash;&gt;
+&lt;!&ndash;                  </div>&ndash;&gt;&ndash;&gt;
+&lt;!&ndash;                </div>&ndash;&gt;
+&lt;!&ndash;              </div>&ndash;&gt;
+&lt;!&ndash;            </div>&ndash;&gt;
+          </div>
+
+        </div>-->
+       <!--啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦-->
+        <!--这里要加一些图片的功能 -->
+<!--        <ul class="box ">-->
+<!--          <li>-->
+<!--            <img src="../images/a03.jpg" alt="">-->
+<!--            &lt;!&ndash;<div class="text">xiaoke</div>&ndash;&gt;-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <img src="../images/a04.jpg" alt="">-->
+<!--         &lt;!&ndash;   <div class="text">xiaoke</div>&ndash;&gt;-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <img src="../images/a05.jpg" alt="">-->
+<!--            &lt;!&ndash;<div class="text">xiaoke</div>&ndash;&gt;-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <img src="../images/4.jpg" alt="">-->
+<!--            &lt;!&ndash;<div class="text">xiaoke</div>&ndash;&gt;-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <img src="../images/5.jpg" alt="">-->
+<!--            &lt;!&ndash;<div class="text">xiaoke</div>&ndash;&gt;-->
+<!--          </li>-->
+<!--        </ul>-->
+
+
+        <!-----------------相册相册相册---------------------->
+        <div class="htmleaf-container">
+
+          <div class="photopile-wrapper">
+            <ul class="photopile">
+              <li>
+                <a href="../images/full/b01.jpg">
+                  <img src="../images/small/b01.jpg"  width="133" height="100" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b02.jpg">
+                  <img src="../images/small/b02.jpg"  width="133" height="100" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b03.jpg">
+                  <img src="../images/small/b03.jpg" width="133" height="100" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b04.jpg">
+                  <img src="../images/small/b04.jpg" width="100" height="133" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b05.jpg">
+                  <img src="../images/small/b05.jpg"  width="100" height="134" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b06.jpg">
+                  <img src="../images/small/b06.jpg" width="100" height="137" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b07.jpg">
+                  <img src="../images/small/b07.jpg" width="120" height="120" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b08.jpg">
+                  <img src="../images/small/b08.jpg"  width="140" height="100" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b09.jpg">
+                  <img src="../images/small/b09.jpg" width="100" height="133" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b10.jpg">
+                  <img src="../images/small/b10.jpg"  width="135" height="128" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b11.jpg">
+                  <img src="../images/small/b11.jpg"  width="119" height="133" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b12.jpg">
+                  <img src="../images/small/b12.jpg"  width="133" height="100" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b13.jpg">
+                  <img src="../images/small/b13.jpg"  width="130" height="130" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b14.jpg">
+                  <img src="../images/small/b14.jpg"  width="111" height="130" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b15.jpg">
+                  <img src="../images/small/b15.jpg"  width="133" height="100" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b16.jpg">
+                  <img src="../images/small/b16.jpg"  width="133" height="100" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b17.jpg">
+                  <img src="../images/small/b17.jpg"  width="133" height="100" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b18.jpg">
+                  <img src="../images/small/b18.jpg"  width="133" height="100" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b19.jpg">
+                  <img src="../images/small/b19.jpg"  width="140" height="79" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b20.jpg">
+                  <img src="../images/small/b20.jpg"  width="133" height="99" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b21.jpg">
+                  <img src="../images/small/b21.jpg" width="100" height="134" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b22.jpg">
+                  <img src="../images/small/b22.jpg"  width="99" height="133" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b23.jpg">
+                  <img src="../images/small/b23.jpg"  width="140" height="93" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b24.jpg">
+                  <img src="../images/small/b24.jpg"  width="136" height="98" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b25.jpg">
+                  <img src="../images/small/b25.jpg" width="136" height="96" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b37.jpg">
+                  <img src="../images/small/b37.jpg"  width="133" height="100" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b26.jpg">
+                  <img src="../images/small/b26.jpg"  width="133" height="96" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b27.jpg">
+                  <img src="../images/small/b27.jpg"  width="133" height="100" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b28.jpg">
+                  <img src="../images/small/b28.jpg"  width="133" height="99" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b29.jpg">
+                  <img src="../images/small/b29.jpg"  width="133" height="97" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b30.jpg">
+                  <img src="../images/small/b30.jpg"  width="140" height="93" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b31.jpg">
+                  <img src="../images/small/b31.jpg" width="133" height="100" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b32.jpg">
+                  <img src="../images/small/b32.jpg"  width="133" height="99" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b33.jpg">
+                  <img src="../images/small/b33.jpg"  width="133" height="100" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b34.jpg">
+                  <img src="../images/small/b34.jpg"  width="133" height="100" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b35.jpg">
+                  <img src="../images/small/b35.jpg" width="120" height="120" />
+                </a>
+              </li>
+              <li>
+                <a href="../images/full/b36.jpg">
+                  <img src="../images/small/b36.jpg" alt="NULL" width="133" height="100" />
+                </a>
+              </li>
+
+            </ul>
+          </div> <!-- .photopile-wrapper -->
+
+
+        </div>
+
+      </div>
+
+      <!--时间页面11111111111111111111-->
+      <div class="section">
+        <div class="timeline"></div>
+        <div class="timepoint11"></div>
+        <div class="ly-triangle11"></div>
+
+        <div class="ly-box82aa">
+          <div class="ly-txt13" style="width:100%;height:10%;left:10%">
+            <img class="ly-img11" src="../img/bbbbb.png" style="width:65%;height:100%">
+          </div>
+          <div class="ly-txt84">
+           <!--当前时间-->
+            <p hidden="hidden">
+              <span id="date"></span>
+              <span id="hour"></span><span>:</span>
+              <span id="minute"></span><span>:</span>
+              <span id="second"></span>
+              <span id="week"></span>
+            </p>
+
+            <p>
+              <h2>我们相识</h2>
+             <!-- <div id="weddingDay"></div>
+              <div id="engagementDay"></div>-->
+            <div  class="dateColor" style=" height:60%; " ><span id="MyShiJian" style=" font-size: 80px"></span></div>
+              <!--<div id="meetingDay"></div>-->
+            </p>
+            <h2>希望未来的路一直有你</h2>
+            <p ><a href="./EasterEgg.html"  style="background-color:#f2e5ff ">请点击😊</a> </p>
+          </div>
+          <!--
+          <div class="ly-imgbox11" style="height:100px;width:100px;left:30%;bottom: 10px">
+            <img class="ly-img11" src="../img/ewm.png" style="height:100%">
+          </div>
+          <div class="ly-imgbox11" style="height:100px;width:100px;left:50%;bottom: 10px">
+            <img class="ly-img11" src="../img/ewm1.png" style="height:100%">
+          </div>-->
+
+        </div>
+       <!-- <div class="ly-triangle82"></div>-->
+      </div>
+
+    </div>
+    <!--试验-->
+    <ul class="bg-bubbles">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <!-- <ul class="bg-bubbles">
+      <li><img src="../img/timg.gif" style="width:100%;height:100%"></li>
+      <li><img src="../img/timg.gif" style="width:100%;height:100%"></li>
+      <li><img src="../img/timg.gif" style="width:100%;height:100%"></li>
+      <li><img src="../img/timg.gif" style="width:100%;height:100%"></li>
+      <li><img src="../img/timg.gif" style="width:100%;height:100%"></li>
+      <li><img src="../img/timg.gif" style="width:100%;height:100%"></li>
+      <li><img src="../img/timg.gif" style="width:100%;height:100%"></li>
+      <li><img src="../img/timg.gif" style="width:100%;height:100%"></li>
+      <li><img src="../img/timg.gif" style="width:100%;height:100%"></li>
+      <li><img src="../img/timg.gif" style="width:100%;height:100%"></li>
+    </ul> -->·
+
+  </div>
+  <audio src="../music/666.mp3" autoplay="autoplay" loop="loop"></audio>
+
+    <script src="../js/jquery-1.8.3.min.js"></script>
+    <script src="../js/jquery.fullPage.min.js"></script>
+    <script src="../js/diy.js"></script>
+    <script src="../js/date.js"></script>
+    <script src="../js/log.js"></script>
+    <script src="../js/photopile.js"></script>
+    <script src="../js/aa/jquery.ui.touch-punch.min.js"></script>
+    <script src="../js/aa/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        PhotoPile().scatter();
+      })
+    </script>
+</body>
+
+</html>
